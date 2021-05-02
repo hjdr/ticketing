@@ -8,9 +8,17 @@ import { signupRouter } from './routes/sign-up';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 import mongoose from 'mongoose'
+import cookieSession from 'cookie-session';
 
 const app = express();
 app.use(json());
+app.set('trust proxy', true);
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+  }),
+);
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
@@ -27,6 +35,7 @@ app.all('*', async (
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.JWT_KEY) throw new Error('JWT_KEY not defined');
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
       useNewUrlParser: true,
