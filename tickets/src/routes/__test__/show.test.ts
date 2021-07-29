@@ -2,10 +2,12 @@ import request from 'supertest';
 import { app } from '../../app';
 
 it('returns a 404 if the ticket is not found', async () => {
-  await request(app)
-    .get('/api/ticket/some-incorrect-id')
+  const response = await request(app)
+    .get('/api/tickets/some-incorrect-id')
     .send()
-    .expect(404);
+    // .expect(404);
+
+  console.log(response.body);
 });
 
 it('returns the ticket if the ticket is found', async () => {
