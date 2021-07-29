@@ -1,5 +1,5 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import { app } from '../app';
 import request from 'supertest';
 
