@@ -1,14 +1,15 @@
 import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
-import { createTicketRouter } from './routes/new';
 import {
   currentUser,
   errorHandler,
   NotFoundError,
 } from '@hr-tickets-app/common';
 import cookieSession from 'cookie-session';
+import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
+import { indexTicketRouter } from './routes';
 
 const app = express();
 app.use(json());
@@ -22,6 +23,7 @@ app.use(
 app.use(currentUser);
 app.use(createTicketRouter);
 app.use(showTicketRouter);
+app.use(indexTicketRouter)
 
 // route should always be last
 app.all('*', async (
