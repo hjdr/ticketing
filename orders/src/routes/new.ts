@@ -3,12 +3,18 @@ import express, {
   Response,
 } from 'express';
 import {
+  BadRequestError,
+  NotFoundError,
+  OrderStatus,
   requireAuth,
   validateRequest,
 } from '@hr-tickets-app/common';
 import { body } from 'express-validator';
+import { Ticket } from '../models/ticket';
+import { Order } from '../models/order';
 
 const router = express.Router();
+const EXPIRATION_WINDOW_SECONDS = 15 * 60;
 
 router.post('api/orders',
   requireAuth,
@@ -20,7 +26,26 @@ router.post('api/orders',
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-  res.send({});
+
+  const { ticketId } = req.body;
+  const ticket = await Ticket.findById(ticketId);
+  if (!ticket) throw new NotFoundError();
+
+  const isReserved = await ticket.isReserved();
+  if (isReserved) throw new BadRequestError('Ticket already reserved');
+
+  const expiration = new Date();
+  expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS);
+
+  const order = Order.build({
+    expiresAt: expiration,
+    status: OrderStatus.Created,
+    ticket,
+    userId: req.currentUser!.id,
+  });
+  await order.save()
+
+  res.status(201).send(order);
 });
 
 export { router as newOrderRouter };
