@@ -16,7 +16,7 @@ import { Order } from '../models/order';
 const router = express.Router();
 const EXPIRATION_WINDOW_SECONDS = 15 * 60;
 
-router.post('api/orders',
+router.post('/api/orders',
   requireAuth,
   [
     body('ticketId')
