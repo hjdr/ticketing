@@ -5,5 +5,5 @@ import {
 } from '@hr-tickets-app/common';
 
 export class OrderCancelledPublisher extends Publisher<OrderCancelledEvent> {
-  readonly subject = Subjects.OrderCancelled
+  readonly subject = Subjects.OrderCancelled;
 }
