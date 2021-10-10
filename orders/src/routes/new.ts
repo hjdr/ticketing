@@ -51,6 +51,7 @@ router.post('/api/orders',
       price: ticket.price,
     },
     userId: order.userId,
+    version: order.version,
   });
   res.status(201).send(order);
 });

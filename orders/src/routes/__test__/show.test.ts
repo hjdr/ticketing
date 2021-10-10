@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 it('fetches the order', async () => {
   const user = global.signin();
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     price: 20,
     title: 'concert',
   });
@@ -40,6 +41,7 @@ it('returns an error if the order does not belong to the requesting user', async
   const userOne = global.signin();
   const userTwo = global.signin();
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     price: 20,
     title: 'concert',
   });
