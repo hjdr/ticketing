@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-jest.mock('../nats-wrapper');
+jest.mock('../nats-wrapper.ts');
 
 let mongo: any;
 
