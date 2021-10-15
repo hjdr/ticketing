@@ -1,4 +1,4 @@
-import nats, { Stan } from 'node-nats-streaming'
+import nats, { Stan } from 'node-nats-streaming';
 
 class NatsWrapper {
   private _client?: Stan;
@@ -16,7 +16,7 @@ class NatsWrapper {
         resolve();
       });
       this.client.on('error', (err) => {
-        reject(err)
+        reject(err);
       })
     })
   }
