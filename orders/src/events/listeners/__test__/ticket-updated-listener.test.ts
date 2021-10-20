@@ -47,7 +47,7 @@ it('acks the message', async () => {
 
 
 it('does not ack the message if the event version is not one version ahead', async () => {
-  const { data, listener, msg, ticket } = await setup();
+  const { data, listener, msg } = await setup();
   data.version = 10;
   try {
     await listener.onMessage(data, msg);

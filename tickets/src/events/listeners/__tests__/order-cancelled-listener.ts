@@ -30,7 +30,7 @@ const setup = async () => {
 };
 
 it('updates the ticket, publishes the event and acks the message', async () => {
-  const { data, listener, msg, orderId, ticket } = await setup();
+  const { data, listener, msg, ticket } = await setup();
   await listener.onMessage(data, msg);
   const updatedTicket = await Ticket.findById(ticket.id);
   expect(updatedTicket!.orderId).toBeUndefined();
