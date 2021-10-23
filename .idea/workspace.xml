@@ -5,7 +5,13 @@
       <change beforePath="$PROJECT_DIR$/../common/build/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../common/build/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../common/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../common/build/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payments/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/payments/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/orders/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/expiration-complete-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/expiration-complete-listener.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/ticket-created-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/ticket-created-listener.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/events/listeners/__test__/ticket-updated-listener.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/events/listeners/__test__/ticket-updated-listener.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/index.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/new.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/new.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/routes/__test__/show.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/routes/__test__/show.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

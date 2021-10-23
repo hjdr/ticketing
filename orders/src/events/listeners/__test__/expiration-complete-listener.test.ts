@@ -20,7 +20,7 @@ const setup = async () => {
     price: 25,
     title: 'concert',
   });
-  await ticket.save()
+  await ticket.save();
   const order = Order.build({
     expiresAt: new Date(),
     status: OrderStatus.Created,

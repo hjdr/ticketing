@@ -43,7 +43,7 @@ it('reserves a ticket', async () => {
     id: mongoose.Types.ObjectId().toHexString(),
     price: 20,
     title: 'concert',
-  })
+  });
   await ticket.save();
   await request(app)
     .post('/api/orders')
@@ -57,7 +57,7 @@ it('emits an order event', async () => {
     id: mongoose.Types.ObjectId().toHexString(),
     price: 20,
     title: 'concert',
-  })
+  });
   await ticket.save();
   await request(app)
     .post('/api/orders')
