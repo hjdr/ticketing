@@ -53,8 +53,8 @@ it('returns an error if the order does not belong to the requesting user', async
     .send({ ticketId: ticket.id })
     .expect(201);
 
-  request(app)
-    .get(`/api/userTwo/${order.id}`)
+  await request(app)
+    .get(`/api/orders/${order.id}`)
     .set('Cookie', userTwo)
     .send()
     .expect(401);

@@ -46,12 +46,14 @@ it('acks the message', async () => {
 });
 
 
-it('does not ack the message if the event version is not one version ahead', async () => {
+it('does not ack the message if the event version is not one version ahead', async (done) => {
   const { data, listener, msg } = await setup();
   data.version = 10;
   try {
     await listener.onMessage(data, msg);
-  } catch (err) {}
+  } catch (err) {
+    done();
+  }
 
   expect(msg.ack).not.toHaveBeenCalled();
 });
