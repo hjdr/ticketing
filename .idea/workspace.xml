@@ -4,7 +4,8 @@
     <list default="true" id="5b262ed8-765a-47f1-a61b-b497dde72b7e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../common/build/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../common/build/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../common/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../common/build/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expiration/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/expiration/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
