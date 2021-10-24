@@ -1,0 +1,25 @@
+name: deploy-manifests
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'infra/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      # download doctl (digital ocean CLI) into the github container
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}]
+
+      # switch to the k8 context to the cluster on digitalocean
+      - run: doctl kubernetes cluster kubeconfig save ticketing-k8s
+      
+      # restart the deployment so it automatically fetches the most recent image on dockerhub
+      - run: kubectl apply -f infra/k8s
