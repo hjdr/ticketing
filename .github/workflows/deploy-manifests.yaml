@@ -1,29 +1,17 @@
-name: deploy-auth
+name: deploy-manifests
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'auth/**'
+      - 'infra/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      # build the image
-      - run: cd auth && docker build -t harryjdr/auth .
-      
-      # log in to docker with env vsriable credentials
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      
-      # push the image to dockerhub
-      - run: docker push harryjdr/auth
       
       # download doctl (digital ocean CLI) into the github container
       - uses: digitalocean/action-doctl@v2
@@ -34,4 +22,5 @@ jobs:
       - run: doctl kubernetes cluster kubeconfig save ticketing-k8s
       
       # restart the deployment so it automatically fetches the most recent image on dockerhub
-      - run: kubectl rollout restart deployment auth-depl
+      - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
+      
