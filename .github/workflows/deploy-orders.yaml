@@ -1,30 +1,30 @@
-name: deploy-auth
+name: deploy-orders
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'auth/**'
+      - 'orders/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       # build the image
-      - run: cd auth && docker build -t harryjdr/auth .
-      
+      - run: cd orders && docker build -t harryjdr/orders .
+
       # log in to docker with env variable credentials
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      
+
       # push the image to dockerhub
-      - run: docker push harryjdr/auth
-      
+      - run: docker push harryjdr/orders
+
       # download doctl (digital ocean CLI) into the github container
       - uses: digitalocean/action-doctl@v2
         with:
@@ -32,6 +32,6 @@ jobs:
 
       # switch to the k8 context to the cluster on digitalocean
       - run: doctl kubernetes cluster kubeconfig save ticketing-k8s
-      
+
       # restart the deployment, so it automatically fetches the most recent image on dockerhub
-      - run: kubectl rollout restart deployment auth-depl
+      - run: kubectl rollout restart deployment orders-depl
